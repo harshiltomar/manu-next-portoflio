@@ -1,5 +1,9 @@
-import sidefolioAceternity from "public/images/quickscore-1.png";
-import sidefolioAceternity2 from "public/images/quickscore-2.png";
+import { describe } from "node:test";
+import quickscore from "public/images/quickscore-1.png";
+import quickscore2 from "public/images/quickscore-2.png";
+import marked from "public/images/marked-1.png";
+import marked2 from "public/images/marked-2.png"
+
 
 export const products = [
   {
@@ -7,8 +11,8 @@ export const products = [
     title: "Quick Score",
     description:
       "A full fledged chrome plugin for live score updates",
-    thumbnail: sidefolioAceternity,
-    images: [sidefolioAceternity, sidefolioAceternity2],
+    thumbnail: quickscore,
+    images: [quickscore, quickscore2],
     stack: ["Reactjs", "Tailwindcss", "aws - lamda, api gateway, event bridge, dynamodb", "serverless.yml"],
     slug: "quickscore",
     content: (
@@ -28,6 +32,29 @@ export const products = [
   </div>
     ),
   },
+  {
+    href: "https://msit-marked-fhr1.onrender.com/",
+    title: "Marked",
+    description:
+      "Attendance management system for MSIT' IPU",
+    thumbnail: marked,
+    images: [marked, marked2],
+    stack: ["MongoDB", "Node.js", "Express.js", "React.js", "Render", "Python"],
+    slug: "marked",
+    content: (
+      <div>
+    <p>
+      Marked is a live project, utilized by 130+ teachers to manage 2000+ students for IP University, mainly MSIT informing parents about their ward&apos;s attendance on a daily basis
+    </p>
+    <p>
+      The backend MongoDB holds data tables for Teacher credentials and students data across multiple semesters. Frontend is a simple React based flow with Teacher being able to login and Filter through Semester Subjects and forwards to alist of students. The list has a simple boolean flow of present and absent which get&apos;s updated into the db for each date.
+    </p>
+    <p>
+      It was built as a team of 5 initally as  Flutter idea migrating into Website. Lastly a python script for sending mail to parents email id about attendance as a lamda function using betablaster cycling to APIKEYS to avoid cost. While it was not a optimal built, the sole goal was to build it free of cost vs the other solutions available in market.
+    </p>
+  </div>
+    ),
+  }
   // {
   //   href: "https://algochurn.com",
   //   title: "Algochurn",
