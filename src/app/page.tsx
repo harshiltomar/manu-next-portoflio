@@ -1,24 +1,22 @@
 "use client";
 
 import { Container } from "@/components/Container";
-import Experience from "@/components/Experience";
 import { Heading } from "@/components/Heading";
 import { Highlight } from "@/components/Highlight";
 import { Paragraph } from "@/components/Paragraph";
 import { TechStack } from "@/components/TechStack";
 import { AuroraBackground } from "@/components/ui/aurora-background";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Home() {
   return (
     <AuroraBackground>
       <motion.div
-        initial={{ opacity: 0.0, y: 40 }}
+        initial={{ opacity: 0.0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
           delay: 0.3,
-          duration: 0.8,
+          duration: 0.6,
           ease: "easeInOut",
         }}
         className="relative flex flex-col gap-4 items-center justify-center px-4"
