@@ -29,8 +29,8 @@ export const socials = [
     icon: IconBrandGithub,
   },
   {
-    href: "",
-    label: "Products",
+    href: "https://chromewebstore.google.com/detail/quick-score-live-score-an/igbedijjdbkpodndbnhdbhngogjdakni",
+    label: "My Product",
     icon: IconProgress,
   },
 ];
