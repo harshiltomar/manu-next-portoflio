@@ -3,6 +3,8 @@ import quickscore from "public/images/quickscore-1.png";
 import quickscore2 from "public/images/quickscore-2.png";
 import marked from "public/images/marked-1.png";
 import marked2 from "public/images/marked-2.png"
+import lume from "public/images/lume-design.png";
+import lume2 from "public/images/lume-design2.png";
 
 
 export const products = [
@@ -54,7 +56,69 @@ export const products = [
     </p>
   </div>
     ),
-  }
+  },
+  {
+    href: "https://lume-designs.vercel.app/",
+    title: "Lume Design",
+    description:
+      "MVP to share individual design assets securely via unique links",
+    thumbnail: lume,
+    images: [lume, lume2],
+    stack: ["Next.js", "Tailwind", "Figma", "Typescript", "Supabase","Stripe","Edge", "auth", "Vercel"],
+    slug: "lume",
+    content: (
+<div>
+      <p>
+        Lume.design is an MVP designed to allow designers to share individual 
+        design assets securely and efficiently via unique links. The platform 
+        aims to streamline the sharing process, reduce file clutter, and provide 
+        a tailored experience for design teams and individual users.
+      </p>
+      <p>
+        It enables users to share specific design assets directly from Figma and Framer 
+        without sharing entire design files. Key features include metadata parsing, 
+        clipboard integration, and secure link generation. The platform also supports 
+        free and paid plans, offering features such as non-expiring links and additional 
+        storage through Stripe-powered subscriptions.
+      </p>
+      <p>
+        The backend is powered by Supabase, handling authentication, role-based 
+        access control, and secure database storage with Row-Level Security (RLS). 
+        The frontend is built with Next.js 14 for optimal performance and SEO, 
+        deployed seamlessly on Vercel.
+      </p>
+      <p>
+        Future enhancements include analytics for tracking asset usage, team collaboration 
+        features, and expanded integration with design tools like Adobe XD. Lume.design is 
+        built to be a cost-effective, scalable solution for designers seeking efficient asset 
+        management.
+      </p>
+    </div>
+    ),
+  },
+  // {
+  //   href: "https://msit-marked-fhr1.onrender.com/",
+  //   title: "Cloneme AI",
+  //   description:
+  //     "Attendance management system for MSIT' IPU",
+  //   thumbnail: marked,
+  //   images: [marked, marked2],
+  //   stack: ["MongoDB", "Node.js", "Express.js", "React.js", "Render", "Python"],
+  //   slug: "marked",
+  //   content: (
+  //     <div>
+  //   <p>
+  //     Marked is a live project, utilized by 130+ teachers to manage 2000+ students for IP University, mainly MSIT informing parents about their ward&apos;s attendance on a daily basis
+  //   </p>
+  //   <p>
+  //     The backend MongoDB holds data tables for Teacher credentials and students data across multiple semesters. Frontend is a simple React based flow with Teacher being able to login and Filter through Semester Subjects and forwards to alist of students. The list has a simple boolean flow of present and absent which get&apos;s updated into the db for each date.
+  //   </p>
+  //   <p>
+  //     It was built as a team of 5 initally as  Flutter idea migrating into Website. Lastly a python script for sending mail to parents email id about attendance as a lamda function using betablaster cycling to APIKEYS to avoid cost. While it was not a optimal built, the sole goal was to build it free of cost vs the other solutions available in market.
+  //   </p>
+  // </div>
+  //   ),
+  // },
   // {
   //   href: "https://algochurn.com",
   //   title: "Algochurn",

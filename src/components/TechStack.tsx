@@ -37,7 +37,7 @@ export const TechStack = () => {
     },
     {
       title: "Typescript",
-      src: "/images/logos/typescript.png",
+      src: "/images/logos/typescript-logo.png",
       className: "h-10 w-10",
     }
   ];

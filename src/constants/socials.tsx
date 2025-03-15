@@ -29,7 +29,7 @@ export const socials = [
     icon: IconBrandGithub,
   },
   {
-    href: "https://chromewebstore.google.com/detail/quick-score-live-score-an/igbedijjdbkpodndbnhdbhngogjdakni",
+    href: "https://dreamlaunch.studio/",
     label: "My Product",
     icon: IconProgress,
   },

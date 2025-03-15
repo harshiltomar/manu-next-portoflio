@@ -68,7 +68,7 @@ export default function About() {
           My journey spans UI/UX Design, Coding, and Writing. I weave words to inform, entertain, and inspire, unraveling complex concepts and igniting imagination through creative design.
         </Paragraph>
         <Paragraph className="mb-4">
-          Currently building <a className="text-blue-500 hover:underline" href="https://chromewebstore.google.com/detail/quick-score-live-score-an/igbedijjdbkpodndbnhdbhngogjdakni">@QuickScore ✨</a> 
+          Currently building <a className="text-blue-500 hover:underline" href="https://dreamlaunch.studio/">@DreamLaunch ✨</a> 
         </Paragraph>
 
         <h2 className="text-2xl font-semibold mt-6 mb-3">Tech Stack</h2>
