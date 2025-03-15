@@ -59,7 +59,7 @@ export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
                 src={blog.image}
                 alt="thumbnail"
                 height="200"
-                width="200"
+                width="400"
                 objectFit="cover"
                 className="rounded-md object-cover h-40 w-60"
               />

@@ -1,0 +1,75 @@
+import { BlogLayout } from "@/components/BlogLayout";
+
+export const meta = {
+  date: "2024-11-25",
+  title: "How to create and fine-tune a model in Replicate with Nextjs",
+  description: "A guide on building a platform like photoai.com using Next.js and Replicate API.",
+  image: "https://media.licdn.com/dms/image/v2/D5622AQEOodfjHWWmUw/feedshare-shrink_2048_1536/B56ZP.VhnMHoAs-/0/1735138878226?e=1744848000&v=beta&t=xCU30eagHXo01nZ9TMhsSQuabsxI6qMDetvNsFoOSCE",
+  tags: ["AI", "Nextjs", "Artificial Intelligence"],
+};
+
+export default (props) => <BlogLayout meta={meta} {...props} />;
+
+# How to create and fine-tune a model in Replicate with Nextjs
+
+**Harshil Tomar**
+4 min read · Nov 25, 2024
+
+Hi everyone, recently I was trying to build a platform like photoai.com. The tech stack was Next.js + Replicate API. However, I faced multiple issues because the documentation support for Replicate is very limited, so I am making a thread about the same to help builders and SaaS founders.
+
+## Prerequisites
+- Next.js 14+ with App Router
+- Tailwind CSS
+- Supabase account
+- Replicate account
+
+You can go to https://supabase.com/ and create a new account, which you can further use for backend as a service in your app.
+
+Firstly, you need to go to replicate.com and create an account. Further, you need to set up billing as well as add permissions to be able to create new model entities. This is a necessary step as without the permission you will keep getting thrown errors even if you try via Postman.
+
+Firstly, you need to select a model; I went forward with https://replicate.com/ostris/flux-dev-lora-trainer/train as it was the most well-known I could find and had training options. The trainings for this model run on Nvidia H100 GPU hardware, which costs $0.001525 per second as of Nov 2024.
+
+Then set up your Next.js repo. I used Next.js + Tailwind for the setup under app router. On the frontend, you will have to create a page that takes in images to use as a training dataset. You can build in a drop-zone using useDropZone and implement some sort of validation to ensure that the image has a size limit.
+
+<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*YhFktDRW31BJGxoq3lLK1Q.png" alt="Replicate Model Example" className="w-full h-auto my-4" />
+
+
+Further, the Replicate API requires you to have the files converted into a zip and upload it locally or using an S3 zip file or any kind of zip file public URL. I am using Supabase for the same. You can create a FormData object and append those files into it. This way, you will have a sort of folder of the files.
+
+You can make an API endpoint for handling the upload of the files to S3 or any service. I have made it as /api/upload as shown in the below code.
+
+<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*rtjQB5XhTPNTJKCoyCp66Q.png" alt="S3 service" className="w-full h-auto my-4" />
+
+Then make a POST request to this endpoint where you handle the flow. I have attached a sample code below on how to go about this.
+
+<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*VHvQNHK_S9eNNoLOvfd5UQ.png" alt="POST API" className="w-full h-auto my-4" />
+
+As you can see, the above returns a response of the public URL of the file created. Back on the frontend component, I call a function called createTraining().
+
+Also, the Replicate model needs a trigger word which you will have to input. It is not totally necessary, but having it helps the model to process things much smoother. Then within the createTraining function, you can make an API call to /api/create-and-train where you input the userId (returned from your auth service), zipUrl, and triggerWord. Further, you will have two processes:
+- Creating a model
+- Training the model
+
+Make a Replicate client using the new Replicate() function. Further, define a unique modelName using any sort of keyword. I am using userId and Date.now() to help ensure it is always unique. Then make a call to replicate.models.create using the inputs as given below or modify them to your need.
+
+<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*E68h5uHdp7oDD-fYJPrSgw.png" alt="Replciate call" className="w-full h-auto py-4" />
+
+This should return a model object which will have owner (probably your username) and model.name (which you created as a unique string). Next, call a function replicate.trainings.create(). This takes in input of the model_owner, model_name, and version_id. You can get the version id from https://replicate.com/ostris/flux-dev-lora-trainer/versions.
+
+It also takes in an input object which has params for the model process. I copied the below from the official docs only. You can find them as well on the above link under the train section.
+
+<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*I7A9gzVu_8i5az3QAwMkow.png" alt="Train" className="w-full h-auto py-4" />
+
+Finally, this should initiate the training process. In my observation, the training takes roughly 5–10 minutes to occur at max, and then on your dashboard of Replicate, you should see your model which on clicking should have an interface like the image below (I have obviously hidden my details).
+
+<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*BFaGjZWuhgm3vyY8SdhquQ.png" alt="replicate page" className="w-full h-auto pt-4" />
+
+And that’s it! You should be able to use your model by giving prompts into it. Hope you liked my thread!
+
+**Harshil Tomar**
+Written by Harshil Tomar
+12 Followers · 5 Following
+Remote SDE hifivecommunity.com | Prev: SWE newgensoft.com, spotline.org | Fullstack & DevOps
+
+Edit profile
+No responses yet
